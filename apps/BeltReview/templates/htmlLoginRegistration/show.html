@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Users Show</title>
+    </head>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .wrapper {
+            width: 460px;
+            vertical-align: left;
+            margin: 60px;
+        }
+
+        h1 {
+            text-decoration: underline;
+        }
+        #summary {
+        text-align: left;
+        cursor: col-resize;
+        width:140px;
+        line-height: 15px;
+        display: inline-block;
+        vertical-align: top;
+        text-align: right
+        }
+
+    </style>
+    <body>
+        <div class="wrapper">
+            <h1>User {{ userID.id }}</h1>
+            <br>
+            <p id="summary">Full Name :</p> {{ userID.first_name }} {{ userID.last_name }}<br>
+            <p id="summary">Email     :</p> {{ userID.email }}<br>
+            <p id="summary">Created at:</p> {{ userID.created_at }}<br><br>
+            <br>
+            <a href="/users/{{ userID.id}}/edit">Edit</a> | <a href="/users/{{ userID.id }}/delete">Delete</a>
+        </div>
+    </body>
+</html>

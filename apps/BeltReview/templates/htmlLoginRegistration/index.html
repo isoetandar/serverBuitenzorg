@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Add Book and Review</title>
+		<meta charset="utf-8">
+		{% load static %}
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<style>
+			*{
+				margin: 0px;
+				padding: 0px;
+				/*outline: red dotted 1px;*/
+			}
+			#container{
+				width: 1000px;
+				/* height:1000px; */
+				border: black solid 1px;
+				margin: 5px;
+				border: black 1px;
+			}
+			#under_line {
+				text-decoration: underline;
+			}
+			.table {
+				border: 1px solid black;
+				width: 400px;
+			}
+			label {
+				width: 140px;
+				height: 25px;
+				text-align: right;
+				margin: 10px;
+			}
+			button {
+				height: 40px;
+				width: 200px;
+				margin-left: 255px;
+				margin-top: 25px;
+				border-radius: 10px;
+				background-color: greenyellow;
+			}
+			input{
+				width: 300px;
+			}
+			select{
+				width: 300px;
+			}
+			textarea{
+				width: 300px;
+				height: 200px;
+			}
+			#registration{
+				width: 360px;
+				display: inline-block;
+				vertical-align: top;
+			}
+			#login{
+				width: 360;
+				display: inline-block;
+				vertical-align: top;
+			}
+			h3{
+				margin-left: 150px;
+			}
+			h4{
+				color: red;
+				margin-left: 70px;
+			}
+			form{
+				width: 800px;
+			}
+		</style>
+    </head>
+    <body>
+		<div id="container">
+				<h3 id="under_line">Add a New Book Tittle and a Review</h3>
+				<form action='/addBook' method='post' id="addReviewBook">
+					{% csrf_token %}
+					  	{% for message in messages %}
+					  		<h4>{{ message }}<br></h4>
+				  		{% endfor %}
+					  <div id="reg">
+						  <table class="table_reg">
+							  <tr>
+								<label for="bookTitle">Book Title:</label>
+								<input name="bookTitle" type="text" placeholder="Book Title"><br>
+							  </tr>
+							  <tr>
+								<label>Author :</label><br>
+								<label for="listChoices">Choose from the list:</label>
+								<select name="listChoices" id="">
+									<option value="">Select below ..</option>
+									<option value="Stephen King">Stephen King</option>
+									<option value="Jane Austen">Jane Austen</option>
+									<option value="Douglas Adams">Douglas Adams</option>
+									<option value="Philip Roth">Philip Roth</option>
+									<option value="Stephen Hawking">Stephen Hawking</option>
+									<option value="Louisa May Alcott">Louisa May Alcott</option>
+								</select><br>
+								<label for="addNewAuthor" id="">Or add a new author</label>
+								<input name="addNewAuthor" type="text" placeholder="New Author"><br>
+                               </tr>
+                               <tr>
+                                <label for="review">Review:</label>
+                                <textarea name="review"></textarea><br>
+							   </tr>
+							   <tr>
+								<label for="rating">Rating:</label>
+								<select name="rating" id="">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+									</select> Star <br>
+							   </tr>
+						  </table>
+						  <button title="addReviewBook" id="submit" type="submit" form="addReviewBook">Add book and review</button>
+					  </div>
+				</form>
+		</div> <!--EO Container-->
+	</body>
+</html>

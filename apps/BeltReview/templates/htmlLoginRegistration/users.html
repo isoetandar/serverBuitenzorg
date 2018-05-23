@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Users</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<style>
+			*{
+				margin: 0px;
+				padding: 0px;
+				/*outline: red dotted 1px;*/
+			}
+			#container{
+				width: 1000px;
+				height:1000px;
+				border: black solid 1px;
+				margin: 25px;
+				border: black 1px;
+
+			}
+			/* #fruitList {
+				width: 500px;
+				height: 500px;
+				background-color: white;
+				display: inline-block;
+				vertical-align: top;
+				margin: 20px;
+				padding: 20px;
+			}
+			#welcome{
+				width: 200px;
+				height: 600px;
+				margin: 10px;
+				padding: 10px;
+				background-color: rgb(0, 255, 251);
+				display: inline-block;
+				border: black 1px solid;
+				vertical-align: top;
+			} */
+			#under_line {
+				text-decoration: underline;
+			}
+			.table {
+				border: 1px solid black;
+				width: 400px;
+			}
+			label {
+				width: 125px;
+				height: 25px;
+			}
+			/* button {
+				height: 40px;
+				width: 120px;
+				margin-left: 155px;
+				margin-top: 25px;
+			} */
+		</style>
+    </head>
+    <body>
+		<div id="container">
+			<h2> Users</h2>
+			<div id="usersList">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">id</th>
+							<th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Created At</th>
+                            <th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+                            {% for frnd in friends %}
+						<tr>
+						    <td>{{ frnd['id']}}</td>
+                            <td>{{ frnd['name']}}</td>
+                            <td>{{ frnd['email']}}</td>
+                            <td>{{ frnd['Created At']}}</td>
+                            <td>{{ frnd['Actions']}}</td>
+                        </tr>
+                          {% endfor %}							
+					</tbody>
+                </table><br>
+            </div>
+		</div><!--EO Container-->
+	</body>
+</html>

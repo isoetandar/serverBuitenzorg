@@ -43,13 +43,15 @@
     </head>
     <body>
 			<div id="container">
-				<form action ='/users/{{ userID.id }}/update', method='post' id="update">
+				<form action ='/{{ userID.id }}/update', method='post' id="update">
 					{% csrf_token %}
-					  <p id="under_line">Edit User {{ userID.id }}</p>
+					  <p id="under_line">Edit My Account : {{ userID.first_name }}</p>
 					  <div id="updateUser">
 							{% for message in messages %}
 								<h4>{{ message }}<br></h4>
 							{% endfor %}
+
+							<h4>{{ email }}<br></h4>
 						  <table class="table_information">
 							  <tr>
 								  <label for="first_name" >First Name:</label>
@@ -61,11 +63,11 @@
                 			  </tr>
                 			  <tr>
                   					<label for="email">Email:</label>
-                  					<input name="email" type="text" value = {{ userID.email }}>
-                			  </tr>
+                  					<input name="email" type="text" value = {{ userID.email }}><br>
+							  </tr>
 						  </table>
                           <button title="Add" id="submit" type="submit" form="update">Update</button><br>
-                          <a href="/users/{{userID.id}}">Show</a> | <a href="/users">Go Back</a>
+                          <a href="/">Log out</a> | <a href="http://localhost:8000/{{userID.id}}/quote">Go Back</a>
 					  </div>
 					</form>
       </div> <!--EOContainer-->

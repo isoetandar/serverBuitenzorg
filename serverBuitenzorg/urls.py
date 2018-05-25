@@ -18,6 +18,6 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
-    url(r'^', include('apps.LoginAndRegistration.urls')) # And now we use the include function to pull in our LoginAndRegistration.urls...
+    url(r'^', include('apps.QuoteDash.urls')) # And now we use the include function to pull in our LoginAndRegistration.urls...
 
 ]

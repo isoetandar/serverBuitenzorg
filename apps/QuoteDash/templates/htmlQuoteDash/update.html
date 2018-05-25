@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Edit User</title>
+        <title>Update User</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<style>
@@ -43,13 +43,14 @@
     </head>
     <body>
 			<div id="container">
-				<form action ='/users/{{ userID.id }}/update', method='post' id="update">
+				<form action ='{{ userID.id }}/update', method='post' id="update">
 					{% csrf_token %}
 					  <p id="under_line">Edit User {{ userID.id }}</p>
-					  <div id="updateUser">
-							{% for message in messages %}
-								<h4>{{ message }}<br></h4>
-							{% endfor %}
+					  <div id="updateUser"></div>
+					  	{% for message in messages %}
+					  		<h4>{{ message }}<br></h4>
+						{% endfor %}
+						  <h4>{{ email }}<br></h4>
 						  <table class="table_information">
 							  <tr>
 								  <label for="first_name" >First Name:</label>
@@ -65,7 +66,7 @@
                 			  </tr>
 						  </table>
                           <button title="Add" id="submit" type="submit" form="update">Update</button><br>
-                          <a href="/users/{{userID.id}}">Show</a> | <a href="/users">Go Back</a>
+                          <a href="/">Show</a> | <a href="{{userID.id}}/quote">Go Back</a>
 					  </div>
 					</form>
       </div> <!--EOContainer-->

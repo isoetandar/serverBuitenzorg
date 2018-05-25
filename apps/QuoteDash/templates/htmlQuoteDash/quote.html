@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Welcome and Quotes</title>
+		<meta charset="utf-8">
+		{% load static %}
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<style>
+			*{
+				margin: 0px;
+				padding: 0px;
+				/* outline: red dotted 1px; */
+			}
+			#container{
+				width: 1000px;
+				/* height:1000px; */
+				border: black solid 1px;
+				margin: 5px;
+				border: black 1px;
+                /* background-color: aqua */
+			}
+			#wrapper{
+				width: 400px;
+                display: inline-block;
+                /* background-color: rgb(232, 233, 167); */
+                vertical-align: top;
+			}
+			#under_line {
+				text-decoration: underline;
+			}
+		    table {
+				border: 1px solid black;
+				width: 400px;
+			}
+			label {
+				width: 55 px;
+				height: 25px;
+				text-align: right;
+                vertical-align: center;
+				margin: 10px;
+			}
+			button {
+				height: 40px;
+				width: 120px;
+				margin-left: 150px;
+				margin-top: 25px;
+				border-radius: 10px;
+				background-color: greenyellow;
+			}
+			input{
+				width: 200px;
+			}
+			h3{
+				margin-left: 65px;
+			}
+			h4{
+				color: red;
+				margin-left: 70px;
+			}
+            p {
+                margin-left: 150px;
+            }
+
+            #textQuotes{
+                width: 300px ;
+                /* height: 200px; */
+                margin-left: 60px;
+                border: 1px solid black;
+            }
+			#quote_text
+			{
+                width: 300px ;
+                height: 200px;
+                /* margin-left: 60px; */
+                border: 1px solid black;
+            }
+            #reg {
+                width: 400px;
+                display: inline-block;
+                /* background-color: blueviolet; */
+                vertical-align: top;
+            }
+
+            #log{
+                width: 500px;
+                display: inline-block;
+                /* background-color: bisque; */
+                vertical-align: top;
+            }
+            #header{
+                width: 100%;
+                /* background-color: brown; */
+                text-align: right;
+                height: 75px;
+                margin-right: 20px;
+                padding-right: 305px;
+            }
+            #logout{
+                margin-right: 20px;
+            }
+            #editAccount{
+                margin-right: 20px;
+            }
+            #author{
+				width: 300px;
+			}
+            
+		</style>
+    </head>
+    <body>
+		<div id="container">
+            <div id="header">
+                <a href="http://localhost:8000/{{id}}/edit" id="editAccount">Edit My Account</a>
+                <a href="/logout"><button title="logout" id="logout" >Log Out</button></a>
+            </div>
+                <div id="reg">
+				    <h3 id="under_line">Welcome, {{ request.session.first_name }}</h3>
+				    <p>Quotes</p>
+                        {% for anyQuote in Quotes %}
+                        <div id="textQuotes">
+                            {{ anyQuote.author }} : " {{ anyQuote.quote_text}} " <br>
+							posted by : {{ anyQuote.posted_by.first_name }}
+							<p>Like : {{ anyQuote.likes_by.count}} count.</p>
+							{{ anyQuote.id}}
+							
+							<a href="/likes/{{ anyQuote.id }}"><button>Like2</button></a>
+							{% if request.session.first_name == anyQuote.posted_by.first_name %}
+								<a href="/delete/{{ session.request.id }}/{{ anyQuote.id }}">Delete</a>
+							{% endif %}
+
+                        </div><br>
+                        {% endfor %}		  
+					</table>
+                </div>
+                <div id="wrapper">
+				    <form action='/addQuote' method='post' id="addquote">
+					    {% csrf_token %}
+					        <h3>Add a Quote</h3><br>
+                        {% for message in messages %}
+                            <h4>{{ message }}<br></h4>
+                        {% endfor %}
+					    <div id="log">
+						    <table class="table_log">
+							    <tr>
+							        <label for="author" >Author:</label>
+							        <input name="author" id="author" type="text" placeholder="Author"><br>
+							    </tr>
+							    <tr>
+							        <label for="quote_text">Quote:</label>
+							        <textarea name="quote_text" id="quote_text"></textarea><br>
+							    </tr>
+						    </table>
+						    <button title="Submit" id="submit" type="submit" form="addquote">Submit</button>
+					    </div>
+                    </form>
+                </div>
+		</div> <!--EO Container-->
+	</body>
+</html>
